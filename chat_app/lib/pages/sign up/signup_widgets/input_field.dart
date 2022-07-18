@@ -1,5 +1,4 @@
 
-import 'package:chat_app/pages/sign%20up/sign_up_controller.dart';
 import 'package:flutter/material.dart';
 
 typedef ValidatorClosure = String? Function(String? value);
