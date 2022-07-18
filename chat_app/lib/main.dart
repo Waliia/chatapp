@@ -23,10 +23,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      // routes: {
-      //    SigninView.PAGE_NAME  : (context){return SigninView();},
-      //    Signup.PAGE_NAME : (context){return Signup() ; }
-      // },
       onGenerateRoute: AppNavigation.buildRoutes,
       initialRoute: SigninView.PAGE_NAME,
       debugShowCheckedModeBanner: false,
