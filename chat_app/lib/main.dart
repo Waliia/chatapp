@@ -1,17 +1,14 @@
 import 'package:chat_app/app_navigation/app_navigation.dart';
-import 'package:chat_app/pages/sign%20in/sign_in_view.dart';
+import 'package:chat_app/pages/sign%20in/signin_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Future main() async{
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-          statusBarColor: Colors.black,
-          statusBarIconBrightness: Brightness.light
-      ));
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.black, statusBarIconBrightness: Brightness.light));
   runApp(const MyApp());
 }
 
