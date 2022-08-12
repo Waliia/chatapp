@@ -9,10 +9,12 @@ class SinginInputField extends StatelessWidget {
   final String hint;
   final double width;
   final double height;
+  final TextInputType textInputType;
   final ValidatorClosure validatorClosure;
 
   const SinginInputField(
       {Key? key,
+      required this.textInputType,
       required this.validatorClosure,
       required this.hint,
       required this.height,
@@ -31,10 +33,9 @@ class SinginInputField extends StatelessWidget {
         controller: controller,
         validator: validatorClosure,
         onChanged: (value) {
-          // validationKey.currentState!.isValid;
+          validationKey.currentState!.isValid;
         },
-        // validator:closure,
-        // keyboardType:textInputType,
+        keyboardType: textInputType,
         style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
           label: Text('$hint'),

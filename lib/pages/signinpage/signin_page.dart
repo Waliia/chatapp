@@ -2,6 +2,7 @@ import 'package:chat_app1/bloc/signinpagecbloc/signin_bloc.dart';
 import 'package:chat_app1/pages/chatpage/chat_page.dart';
 import 'package:chat_app1/pages/signinpage/signin_widgets/signin_form.dart';
 import 'package:chat_app1/widgets/check_connectivity.dart';
+import 'package:chat_app1/widgets/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,7 @@ class ScaffoldPage extends StatelessWidget {
                 );
               } else if (state is SigninLoadedState) {
                 SchedulerBinding.instance.addPostFrameCallback((Duration dur) {
-                  Navigator.pushNamed(context, ChatPage.PAGE_NAME,
+                  Navigator.pushReplacementNamed(context, ChatPage.PAGE_NAME,
                       arguments: null);
                 });
                 return SizedBox();
@@ -53,17 +54,8 @@ class ScaffoldPage extends StatelessWidget {
                 SchedulerBinding.instance.addPostFrameCallback((Duration dur) {
                   showDialog(
                       context: context,
-                      builder: (context) => AlertDialog(
-                            title: Text(state.errorMsg),
-                            actions: [
-                              MaterialButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  color: Colors.red,
-                                  child: Text('Ok'))
-                            ],
-                          ));
+                      builder: (context) =>
+                          CustomDialog(masg: '${state.errorMsg}'));
                 });
                 return SizedBox();
               } else {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../controllers/signin_controller.dart';
 import '../../../widgets/already_have_account.dart';
@@ -39,6 +40,7 @@ class SigninForm extends StatelessWidget {
               ),
               //Input Field Email
               SinginInputField(
+                textInputType: TextInputType.emailAddress,
                 validatorClosure: isValidEmail,
                 hint: 'user email',
                 height: height * .13,
@@ -51,6 +53,7 @@ class SigninForm extends StatelessWidget {
               ),
               //Input field Password
               SinginInputField(
+                textInputType: TextInputType.visiblePassword,
                 validatorClosure: isValidPassword,
                 hint: 'user password',
                 controller: passwordController,

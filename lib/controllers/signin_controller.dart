@@ -59,7 +59,7 @@ void btnSignin(
 }
 
 void registerNowClick(BuildContext context) {
-  Navigator.pushNamed(context, SignupPage.PAGE_NAME);
+  Navigator.pushReplacementNamed(context, SignupPage.PAGE_NAME);
 }
 
 void googleSigninClick(BuildContext context) {
