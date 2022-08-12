@@ -2,7 +2,9 @@ import 'package:chat_app1/app_navigation/app_navigation.dart';
 import 'package:chat_app1/bloc/connectivity/connectivity_bloc.dart';
 import 'package:chat_app1/bloc/signinpagecbloc/signin_bloc.dart';
 import 'package:chat_app1/bloc/signup_bloc.dart';
+import 'package:chat_app1/pages/chatpage/chat_page.dart';
 import 'package:chat_app1/pages/signinpage/signin_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
     return MultiBlocProvider(
       providers: [
         BlocProvider<ConnectivityBloc>(
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SigninPage(),
+        home: auth.currentUser != null ? const ChatPage() : SigninPage(),
       ),
     );
   }

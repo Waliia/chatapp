@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:chat_app1/webapis/firebase/authentication.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 part 'signup_event.dart';
@@ -10,11 +11,13 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
     on<SignUpBtnEvent>((event, emit) async {
       emit.call(SignupLoadingState());
       try {
-        await signupWithEmailAndPassword(
+        User? user = await signupWithEmailAndPassword(
             event.email, event.password, event.name);
-        emit(SignupLoadedState());
+        emit(SignupLoadedState(user));
+      } on FirebaseAuthException catch (e) {
+        emit.call(SignupErrorState(e.code));
       } catch (e) {
-        emit.call(SignupErrorState());
+        emit.call(SignupErrorState(e.toString()));
       }
     });
   }
