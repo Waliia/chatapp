@@ -2,7 +2,7 @@ import 'package:chat_app1/pages/signinpage/signin_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../bloc/signup_bloc.dart';
+import '../bloc/signup_bloc/signup_bloc.dart';
 
 /*
    this is function is signin button

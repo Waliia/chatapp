@@ -46,7 +46,7 @@ class ScaffoldPage extends StatelessWidget {
                 );
               } else if (state is SigninLoadedState) {
                 SchedulerBinding.instance.addPostFrameCallback((Duration dur) {
-                  Navigator.pushReplacementNamed(context, ChatPage.PAGE_NAME,
+                  Navigator.pushReplacementNamed(context, HomeScreen.PAGE_NAME,
                       arguments: null);
                 });
                 return SizedBox();

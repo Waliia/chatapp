@@ -9,9 +9,12 @@ Future<User?> signinWithEmailAndPassword(String email, String password) async {
   return Future(() => user);
 }
 
-Future<void> sendNameToFirebase(String name, String uid) async {
+Future<void> sendNameToFirebase(String name, String uid, String email) async {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
-  await firestore.collection('users').doc(uid).set({'user_name': name});
+  await firestore
+      .collection('users')
+      .doc(uid)
+      .set({'user_name': name, 'email': email});
 }
 
 Future<User?> signupWithEmailAndPassword(
@@ -20,7 +23,7 @@ Future<User?> signupWithEmailAndPassword(
       email: email, password: password);
   User? user = credential.user;
   if (user != null) {
-    await sendNameToFirebase(name, user.uid);
+    await sendNameToFirebase(name, user.uid, email);
   }
   return Future(() => credential.user);
 }

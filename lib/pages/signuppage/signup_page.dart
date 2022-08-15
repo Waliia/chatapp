@@ -7,7 +7,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-import '../../bloc/signup_bloc.dart';
+import '../../bloc/signup_bloc/signup_bloc.dart';
 import '../../controllers/signup_controller.dart';
 import '../../widgets/already_have_account.dart';
 import '../../widgets/google_signin_btn.dart';
@@ -34,7 +34,7 @@ class SignupPage extends StatelessWidget {
                 );
               } else if (state is SignupLoadedState) {
                 SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
-                  Navigator.pushReplacementNamed(context, ChatPage.PAGE_NAME);
+                  Navigator.pushReplacementNamed(context, HomeScreen.PAGE_NAME);
                 });
                 return SizedBox();
               } else if (state is SignupErrorState) {

@@ -1,7 +1,8 @@
 import 'package:chat_app1/app_navigation/app_navigation.dart';
 import 'package:chat_app1/bloc/connectivity/connectivity_bloc.dart';
+import 'package:chat_app1/bloc/homebloc/home_bloc.dart';
 import 'package:chat_app1/bloc/signinpagecbloc/signin_bloc.dart';
-import 'package:chat_app1/bloc/signup_bloc.dart';
+import 'package:chat_app1/bloc/signup_bloc/signup_bloc.dart';
 import 'package:chat_app1/pages/chatpage/chat_page.dart';
 import 'package:chat_app1/pages/signinpage/signin_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<SigninBloc>(
           create: (context) => SigninBloc(),
         ),
+        BlocProvider<HomeBloc>(
+          create: (context) => HomeBloc(),
+        )
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -39,7 +43,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: auth.currentUser != null ? const ChatPage() : SigninPage(),
+        home: auth.currentUser != null ? HomeScreen() : SigninPage(),
       ),
     );
   }
