@@ -16,10 +16,10 @@ class AppNavigation {
           return MaterialPageRoute(
               builder: (context) => SignupPage(), settings: settings);
         }
-      case ChatPage.PAGE_NAME:
+      case HomeScreen.PAGE_NAME:
         {
           return MaterialPageRoute(
-              builder: (context) => ChatPage(), settings: settings);
+              builder: (context) => HomeScreen(), settings: settings);
         }
       default:
         {}
